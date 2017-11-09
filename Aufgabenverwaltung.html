@@ -46,7 +46,7 @@
 		function loadSiteT(){
 			document.getElementById("liste").innerHTML = "";
 			var req = new XMLHttpRequest();
-			req.open("GET","selectionT",false);
+			req.open("GET","http://localhost:3000/selectionT",false);
 			req.send();
 			alert(req.responseText);
 			JSON.parse(req.responseText).forEach(function(task){
@@ -73,7 +73,7 @@
 		function loadSiteD(){
 			document.getElementById("liste").innerHTML = "";
 			var req = new XMLHttpRequest();
-			req.open("GET","selectionD",false);
+			req.open("GET","http://localhost:3000/selectionD",false);
 			req.send();
 			alert(req.responseText);
 			JSON.parse(req.responseText).forEach(function(task){
@@ -103,7 +103,7 @@
 			var index = event.target.id;
 			alert(event.target.id);
 			var req = new XMLHttpRequest();
-			req.open("POST","close",false);
+			req.open("POST","http://localhost:3000/close",false);
 			req.setRequestHeader("Content-Type", "application/json");
 			req.send(JSON.stringify({'id': index}));
 		}
