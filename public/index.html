@@ -116,6 +116,7 @@
 			req.open("POST","close",false);
 			req.setRequestHeader("Content-Type", "application/json");
 			req.send(JSON.stringify({'id': index}));
+			loadSiteT();
 		}
 		
 		function checkboxU()
