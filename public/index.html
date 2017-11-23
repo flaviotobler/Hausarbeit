@@ -32,10 +32,8 @@
 	<div class="container">
 		<div class="row">
 			<div id="eingabe" class="col-12">
-				<form action = "http://127.0.0.1:3000/add" method = "GET">
 					 <input type="task" class="form-control" id="taskname" aria-describedby="taskname" placeholder="Enter task" name = "isname">
-					 <input type = "submit" value = "Submit">
-				</form>
+					 <input type = "submit" value = "Submit" onclick=addTask()>
 			</div>
 		</div>
 		<div id="liste" class="row">
@@ -44,10 +42,21 @@
 
     <!-- Optional JavaScript -->
 	<script>
+		function addTask()
+		{
+			var taskname = document.getElementById("taskname").value;
+			alert(taskname);
+			var req = new XMLHttpRequest();
+			req.open("POST","add",false);
+			req.setRequestHeader("Content-Type", "application/json");
+			req.send(JSON.stringify({'isname': taskname}));
+			loadSiteT();
+		}
+		
 		function loadSiteT(){
 			document.getElementById("liste").innerHTML = "";
 			var req = new XMLHttpRequest();
-			req.open("GET","http://localhost:3000/selectionT",false);
+			req.open("GET","selectionT",false);
 			req.send();
 			alert(req.responseText);
 			JSON.parse(req.responseText).forEach(function(task){
@@ -74,7 +83,7 @@
 		function loadSiteD(){
 			document.getElementById("liste").innerHTML = "";
 			var req = new XMLHttpRequest();
-			req.open("GET","http://localhost:3000/selectionD",false);
+			req.open("GET","selectionD",false);
 			req.send();
 			alert(req.responseText);
 			JSON.parse(req.responseText).forEach(function(task){
@@ -104,7 +113,7 @@
 			var index = event.target.id;
 			alert(event.target.id);
 			var req = new XMLHttpRequest();
-			req.open("POST","http://localhost:3000/close",false);
+			req.open("POST","close",false);
 			req.setRequestHeader("Content-Type", "application/json");
 			req.send(JSON.stringify({'id': index}));
 		}

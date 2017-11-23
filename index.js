@@ -15,8 +15,9 @@ app.listen(process.env.PORT || 3000, function () {
 	console.log('Example app listening on port !');
 });
 
-app.get('/add', function (req, res) {
-	newTask = {id: index, name: req.query.isname, isOpen: "todo"};
+app.post('/add', function (req, res) {
+	console.log(req.body);
+	newTask = {id: index, name: req.body.isname, isOpen: "todo"};
 	index = index + 1;
 	tasks.push(newTask);
 	console.log(newTask);
