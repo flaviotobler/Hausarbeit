@@ -8,8 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   
-	<link rel="stylesheet" href="https://flaviotobler.github.io/Hausarbeit/Aufgabenverwaltung.css">
-	<link rel="manifest" href="https://flaviotobler.github.io/Hausarbeit/Manifest.json">
+	<link rel="stylesheet" href="Aufgabenverwaltung.css">
+	<link rel="manifest" href="Manifest.json">
   </head>
   <body onload="loadSiteT()">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -117,7 +117,7 @@
 	</script>
 	<script>
 			if('serviceWorker' in navigator){
-				navigator.serviceWorker.register('https://flaviotobler.github.io/Hausarbeit/ServiceWorker.js').then(function(registration){
+				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
 				}).catch(function(err){
 					console.log('ServiceWorker registration failed: ', err);

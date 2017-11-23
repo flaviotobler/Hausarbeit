@@ -3,14 +3,16 @@ var app = express();
 var tasks = new Array ();
 var index = 1;
 const bodyParser = require('body-parser');
+
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
 	res.sendFile( __dirname + "/" + "Aufgabenverwaltung.html" );
 });
 
-app.listen(3000, function () {
-	console.log('Example app listening on port 3000!');
+app.listen(process.env.PORT || 3000, function () {
+	console.log('Example app listening on port !');
 });
 
 app.get('/add', function (req, res) {
