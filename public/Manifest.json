@@ -1,7 +1,7 @@
 {
 	"name": "Aufgabenverwaltung web app",
 	"short_name": "Aufgabenverwaltung",
-	"start_url": "https://flaviotobler.github.io/Hausarbeit/Aufgabenverwaltung.html",
+	"start_url": "https://aufgabenverwaltung-ft-htw-1.herokuapp.com",
 	"display": "standalone",
 	"icons": [{
 		"src": "https://flaviotobler.github.io/Hausarbeit/images/homescreen.png",
