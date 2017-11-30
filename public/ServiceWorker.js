@@ -15,14 +15,11 @@ self.addEventListener('install', event => {
 	);
 });
 
-self.addEventListener('fetch', event => {
+this.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
 		event.respondWith(
-			fetch(event.request.url).then(function(response){
-				cache.put(response);
-				return response;
-			}).catch(error => {
-				return caches.match(event.request.url);
+			fetch(event.request.url).catch(error => {
+				return caches.match(offlineUrl);
 			})
 		);
 	} else {
@@ -34,4 +31,4 @@ self.addEventListener('fetch', event => {
 		})
 	);
 	}
-})
+}
