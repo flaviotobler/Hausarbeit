@@ -16,14 +16,14 @@ self.addEventListener('install', event => {
 });
 
 this.addEventListener('fetch', event => {
-	if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
+	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			fetch(event.request.url).then(function(response){
-				cache.put(response);
+				//cache.put(response);
 				return response;
-			}).catch(error => {
+			})/*.catch(error => {
 				return caches.match(event.request.url);
-			})
+			})*/
 		);
 	} else {
 		event.respondWith(
