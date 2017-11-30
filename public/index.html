@@ -88,7 +88,7 @@
 		function loadSiteD(){
 			document.getElementById("liste").innerHTML = "";
 			var req = new XMLHttpRequest();
-			rec.onload = function(){
+			req.onload = function(){
 				if( this.status == 200 && this.responseText != null){
 					JSON.parse(req.responseText).forEach(function(task){
 						var div = document.createElement("div");
