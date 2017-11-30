@@ -15,7 +15,7 @@ self.addEventListener('install', event => {
 	);
 });
 
-this.addEventListener('fetch', event => {
+self.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			fetch(event.request.url).then(function(response){
