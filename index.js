@@ -22,7 +22,7 @@ app.post('/add', function (req, res) {
 	tasks.push(newTask);
 	console.log(newTask);
 	console.log(tasks);
-	res.sendFile(JSON.stringify(tasks));
+	res.send(JSON.stringify(tasks));
 });
 
 app.post('/close', function (req, res) {
