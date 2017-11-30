@@ -31,4 +31,4 @@ this.addEventListener('fetch', event => {
 		})
 	);
 	}
-}
+})
