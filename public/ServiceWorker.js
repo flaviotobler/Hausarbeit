@@ -17,22 +17,31 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-	/*if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
+	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
-			fetch(event.request.url).then(function(response){
+			caches.open(cacheName).then(function(cache){
+				return cache.match(event.request).then(function(response){
+					return response || fetch(event.request).then(function(response){
+						cache.put(event.request, response.clone());
+						return response;
+					});
+				});
+			})
+			/*fetch(event.request.url).then(function(response){
 				cache.put(response);
 				return response;
 			}).catch(error => {
 				return caches.match(event.request.url);
-			})
+			})*/
 		);
 	} else {
+		/*
 		event.respondWith(
 		caches.match(event.request, {
 			ignoreSearch: true
 		}).then(function(response) {
 			return response || fetch(event.request);
 		})
-	);
-	}*/
+	);*/
+	}
 })
