@@ -4,11 +4,11 @@
 	"start_url": "https://aufgabenverwaltung-ft-htw-1.herokuapp.com",
 	"display": "standalone",
 	"icons": [{
-		"src": "https://flaviotobler.github.io/Hausarbeit/images/homescreen.png",
+		"src": "images/homescreen.png",
 		"sizes": "192x192",
 		"type": "image/png"
 	}, {
-		"src": "https://flaviotobler.github.io/Hausarbeit/images/homescreen-144.png",
+		"src": "homescreen-144.png",
 		"sizes": "144x144",
 		"type": "image/png"
 	}]
