@@ -47,7 +47,7 @@
 			var taskname = document.getElementById("taskname").value;
 			alert(taskname);
 			var req = new XMLHttpRequest();
-			req.open("POST","add",false);
+			req.open("POST","add");
 			req.setRequestHeader("Content-Type", "application/json");
 			req.send(JSON.stringify({'isname': taskname}));
 			loadSiteT();
@@ -81,7 +81,7 @@
 					//something went wrong
 				}
 			}
-			req.open("GET","selectionT",false);
+			req.open("GET","/selectionT");
 			req.send();
 			alert(req.responseText);
 		}
@@ -113,7 +113,7 @@
 					//something went wrong
 				}
 			}
-			req.open("GET","selectionD",false);
+			req.open("GET","/selectionD");
 			req.send();
 			alert(req.responseText);
 		}
@@ -123,7 +123,7 @@
 			var index = event.target.id;
 			alert(event.target.id);
 			var req = new XMLHttpRequest();
-			req.open("POST","close",false);
+			req.open("POST","/close");
 			req.setRequestHeader("Content-Type", "application/json");
 			req.send(JSON.stringify({'id': index}));
 			loadSiteT();
