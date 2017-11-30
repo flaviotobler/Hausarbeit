@@ -16,7 +16,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-	if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
+	/*if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
 		event.respondWith(
 			fetch(event.request.url).then(function(response){
 				cache.put(response);
@@ -33,5 +33,5 @@ self.addEventListener('fetch', event => {
 			return response || fetch(event.request);
 		})
 	);
-	}
+	}*/
 })
