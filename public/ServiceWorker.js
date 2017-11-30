@@ -2,7 +2,7 @@ var cacheName = 'seitenaufbau';
 
 
 self.addEventListener('install', event => {
-	event.waitUntil(
+	/*event.waitUntil(
 	caches.open(cacheName)
 	.then(cache => cache.addAll([
 		'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
@@ -12,10 +12,10 @@ self.addEventListener('install', event => {
 		'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js',
 		'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'
 		]))
-	);
+	);*/
 });
 
-this.addEventListener('fetch', event => {
+self.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && (event.request.name == "selectionD" || event.request.name == "selectionT")){
 		event.respondWith(
 			fetch(event.request.url).then(function(response){

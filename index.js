@@ -38,7 +38,7 @@ app.post('/close', function (req, res) {
 			
 		}
 	});
-	res.sendFile( __dirname + "/" + "Aufgabenverwaltung.html" );
+	res.send(JSON.stringify(tasks));
 });
 
 app.get('/selectionT', function (req, res) {
