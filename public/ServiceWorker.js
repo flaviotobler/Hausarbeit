@@ -32,16 +32,16 @@ self.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			fetch(event.request)
-				.then(function(response){
-					/*
+				/*
+				.then(function(response){					
 					cache.open(cacheName)
 						.then(function(cache){
 							cache.put(event.request, request.clone());
 							return cache;
 						});
-					*/
 					return response;
 				})
+				*/
 				.catch(function(){
 					return caches.match(event.request);
 				});				
