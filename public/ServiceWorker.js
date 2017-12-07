@@ -34,9 +34,9 @@ self.addEventListener('fetch', event => {
 				return fetch(event.request).then(function(response){
 					cache.put(event.request, request.clone());
 					return response;
-				}).catch(function(){
+				})/*.catch(function(){
 					return caches.match(event.request);
-				})
+				})*/
 				
 				
 				
