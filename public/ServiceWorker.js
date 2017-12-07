@@ -21,7 +21,7 @@ self.addEventListener('fetch', event => {
 		event.waitUntil(
 		idbKeyval.get('add').then(value =>
 			fetch('/add/',{
-				method: 'POST'
+				method: 'POST',
 				headers: new Headers({ 'content-type': 'application/json' }),
 				body: JSON.stringify(value)
 			})
