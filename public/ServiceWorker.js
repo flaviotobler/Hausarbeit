@@ -30,11 +30,14 @@ self.addEventListener('fetch', event => {
 	}
 	else */if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
-			caches.open(cacheName).then(function(cache){
+			fetch(event.request).catch(function(){
+				return caches.match(event.request);
+			})
+			/*caches.open(cacheName).then(function(cache){
 				return fetch(event.request).then(function(response){
 					cache.put(event.request, request.clone());
 					return response;
-				})/*.catch(function(){
+				}).catch(function(){
 					return caches.match(event.request);
 				})*/
 				
@@ -46,7 +49,6 @@ self.addEventListener('fetch', event => {
 						return response;
 					});
 				});*/
-			})
 			/*fetch(event.request.url).then(function(response){
 				cache.put(response);
 				return response;
