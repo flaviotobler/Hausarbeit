@@ -32,7 +32,6 @@ self.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			fetch(event.request)
-				/*
 				.then(function(response){					
 					cache.open(cacheName)
 						.then(function(cache){
@@ -41,7 +40,6 @@ self.addEventListener('fetch', event => {
 						});
 					return response;
 				})
-				*/
 				.catch(function(){
 					return caches.match(event.request);
 				})				
