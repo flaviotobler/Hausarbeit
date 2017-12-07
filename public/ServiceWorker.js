@@ -17,6 +17,17 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+	if(event.tag === 'tasks'){
+		event.waitUntil(
+		idbKeyval.get('add').then(value =>
+			fetch('/add/',{
+				method: 'POST'
+				headers: new Headers({ 'content-type': 'application/json' }),
+				body: JSON.stringify(value)
+			})
+		));
+		idbKeyval.delete('add');
+	}
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(function(cache){
