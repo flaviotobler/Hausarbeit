@@ -35,18 +35,18 @@ self.addEventListener('fetch', event => {
 				.then(function(response){					
 					caches.open(cacheName)
 						.then(function(cache){
-							cache.put(event.request, request.clone());
+							cache.put(event.request.url, event.request.clone());
 							return cache;
 						});
 					return response;
 				})
 				.catch(function(){
-					return caches.match(event.request);
+					return caches.match(event.request.url);
 				})				
 		);
 	} else {
 		event.respondWith(
-			caches.match(event.request).then(function(response){
+			caches.match(event.request.url).then(function(response){
 				return response || fetch(event.request);
 			})
 		);
