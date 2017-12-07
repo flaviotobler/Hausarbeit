@@ -33,7 +33,7 @@ self.addEventListener('fetch', event => {
 		event.respondWith(
 			fetch(event.request)
 				.then(function(response){					
-					cache.open(cacheName)
+					caches.open(cacheName)
 						.then(function(cache){
 							cache.put(event.request, request.clone());
 							return cache;
