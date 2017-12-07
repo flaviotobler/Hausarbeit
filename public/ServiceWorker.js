@@ -28,7 +28,7 @@ self.addEventListener('fetch', event => {
 		));
 		idbKeyval.delete('add');
 	}
-	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
+	else if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(function(cache){
 				return fetch(event.request).then(function(response){
