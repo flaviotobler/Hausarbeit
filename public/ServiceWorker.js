@@ -35,7 +35,7 @@ self.addEventListener('fetch', event => {
 				.then(function(response){					
 					caches.open(cacheName)
 						.then(function(cache){
-							cache.put(event.request.url, response);
+							cache.put(event.request.url, timpani);
 							return event.request.clone();
 						});
 					return response;
