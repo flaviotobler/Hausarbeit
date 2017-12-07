@@ -155,14 +155,14 @@
 			
 			if('serviceWorker' in navigator && 'SyncManager' in window){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
-					document.getElementById("eingabefeld").addEventListener('click', addTasksync);
+					document.getElementById("eingabefeld").addEventListener('click', addTasksync());
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
 				}).catch(function(err){
 					console.log('ServiceWorker registration failed: ', err);
 				});
 			} else if('serviceWorker' in navigator){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
-					document.getElementById("eingabefeld").addEventListener('click', addTask);
+					document.getElementById("eingabefeld").addEventListener('click', addTask());
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
 				}).catch(function(err){
 					console.log('ServiceWorker registration failed: ', err);
