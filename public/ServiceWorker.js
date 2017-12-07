@@ -20,12 +20,21 @@ self.addEventListener('fetch', event => {
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(function(cache){
-				return cache.match(event.request).then(function(response){
+				return fetch(event.request).then(function(response){
+					cache.put(event.request, request.clone());
+					return response;
+				}).catch(function(){
+					return caches.match(event.request);
+				})
+				
+				
+				
+				/*return cache.match(event.request).then(function(response){
 					return response || fetch(event.request).then(function(response){
 						cache.put(event.request, response.clone());
 						return response;
 					});
-				});
+				});*/
 			})
 			/*fetch(event.request.url).then(function(response){
 				cache.put(response);
