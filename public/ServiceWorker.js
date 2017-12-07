@@ -28,40 +28,23 @@ self.addEventListener('fetch', event => {
 		));
 		idbKeyval.delete('add');
 	}
-	else */if(event.request.method ==='GET' && /selection/.test(event.request.url)){
+	else */
+	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
-			fetch(event.request).then(function(response){
-				cache.open(cacheName).then(function(cache){
-					cache.put(event.request, request.clone());
-					return cache;
-				});
-				return response;
-			})
-			.catch(function(){
-				return caches.match(event.request);
-			});
-			/*caches.open(cacheName).then(function(cache){
-				return fetch(event.request).then(function(response){
-					cache.put(event.request, request.clone());
+			fetch(event.request)
+				.then(function(response){
+					/*
+					cache.open(cacheName)
+						.then(function(cache){
+							cache.put(event.request, request.clone());
+							return cache;
+						});
+					*/
 					return response;
-				}).catch(function(){
+				})
+				.catch(function(){
 					return caches.match(event.request);
-				})*/
-				
-				
-				
-				/*return cache.match(event.request).then(function(response){
-					return response || fetch(event.request).then(function(response){
-						cache.put(event.request, response.clone());
-						return response;
-					});
-				});*/
-			/*fetch(event.request.url).then(function(response){
-				cache.put(response);
-				return response;
-			}).catch(error => {
-				return caches.match(event.request.url);
-			})*/
+				});				
 		);
 	} else {
 		event.respondWith(
