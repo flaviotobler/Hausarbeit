@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-	if(event.tag === 'tasks'){
+	/*if(event.tag === 'tasks'){
 		event.waitUntil(
 		idbKeyval.get('add').then(value =>
 			fetch('/add/',{
@@ -28,7 +28,7 @@ self.addEventListener('fetch', event => {
 		));
 		idbKeyval.delete('add');
 	}
-	else if(event.request.method ==='GET' && /selection/.test(event.request.url)){
+	else */if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(function(cache){
 				return fetch(event.request).then(function(response){

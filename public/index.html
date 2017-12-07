@@ -33,7 +33,7 @@
 		<div class="row">
 			<div id="eingabe" class="col-12">
 					 <input type="task" class="form-control" id="taskname" aria-describedby="taskname" placeholder="Enter task" name = "isname">
-					 <input id="eingabefeld" type = "submit" value = "Submit">
+					 <input id="eingabefeld" type = "submit" value = "Submit" onclick=addTask()>
 			</div>
 		</div>
 		<div id="liste" class="row">
@@ -149,7 +149,7 @@
 	<script src="./js/idb-keyval.js"></script>
 	<script>
 
-			
+			/*
 			if('serviceWorker' in navigator && 'SyncManager' in window){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					document.getElementById("eingabefeld").addEventListener('click', addTasksync());
@@ -160,6 +160,13 @@
 			} else if('serviceWorker' in navigator){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					document.getElementById("eingabefeld").addEventListener('click', addTask());
+					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
+				}).catch(function(err){
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			}*/
+			if('serviceWorker' in navigator){
+				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
 				}).catch(function(err){
 					console.log('ServiceWorker registration failed: ', err);
