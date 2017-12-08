@@ -52,6 +52,6 @@ self.addEventListener('sync', event => {
 				})
 			)
 		);
-		idbKeyval.delete('addTask');
+		idbKeyval.delete('theTask');
 	}
 });
