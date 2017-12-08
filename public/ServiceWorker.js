@@ -17,18 +17,6 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-	/*if(event.tag === 'tasks'){
-		event.waitUntil(
-		idbKeyval.get('add').then(value =>
-			fetch('/add/',{
-				method: 'POST',
-				headers: new Headers({ 'content-type': 'application/json' }),
-				body: JSON.stringify(value)
-			})
-		));
-		idbKeyval.delete('add');
-	}
-	else */
 	if(event.request.method ==='GET' && /selection/.test(event.request.url)){
 		event.respondWith(
 			fetch(event.request)
@@ -49,5 +37,21 @@ self.addEventListener('fetch', event => {
 				return response || fetch(event.request);
 			})
 		);
+	}
+});
+
+importScript('./idb-keyval.js');
+self.addEventListener('sync', event => {
+	if(event.tag === 'addTask'){
+		event.waitUntil(
+			idbKeyval.get('theTask').then(value =>
+				fetch('/addTask/', {
+					method: 'POST',
+					headers: new Headers({ 'content-type': 'application/json'}),
+					body: JSON.stringify(value)
+				})
+			)
+		);
+		idbKeyval.delete('addTask');
 	}
 });

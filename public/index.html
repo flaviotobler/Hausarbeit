@@ -33,7 +33,7 @@
 		<div class="row">
 			<div id="eingabe" class="col-12">
 					 <input type="task" class="form-control" id="taskname" aria-describedby="taskname" placeholder="Enter task" name = "isname">
-					 <input id="eingabefeld" type = "submit" value = "Submit" onclick=addTask()>
+					 <input id="eingabefeld" type = "submit" value = "Submit">
 			</div>
 		</div>
 		<div id="liste" class="row">
@@ -137,14 +137,28 @@
 	</script>
 	<script src="idb-keyval.js"></script>
 	<script>
-
+			if('serviceWorker' in navigator && 'SyncManager' in window){
+				navigator.serviceWorker.register('./ServiceWorker.js')
+					.then(registration => navigator.serviceWorker.ready)
+						.then(registration => {
+							document.getElementById('eingabefeld').addEventListener('click', () => {
+								registration.sync.register('addTask').then(() => {
+									var payload = {
+										taskname: document.getElementById('taskname').value
+									};
+									idbKeyval.set('theTask', payload);
+								});
+							});
+						});
+			}
+			/*
 			if('serviceWorker' in navigator){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
 				}).catch(function(err){
 					console.log('ServiceWorker registration failed: ', err);
 				});
-			}
+			}*/
 		</script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
