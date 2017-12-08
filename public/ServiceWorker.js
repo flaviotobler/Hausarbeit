@@ -40,7 +40,7 @@ self.addEventListener('fetch', event => {
 	}
 });
 
-importScript('./idb-keyval.js');
+importScripts('./idb-keyval.js');
 self.addEventListener('sync', event => {
 	if(event.tag === 'addTask'){
 		event.waitUntil(
