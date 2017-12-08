@@ -34,9 +34,7 @@ self.addEventListener('fetch', event => {
 	} else {
 		event.respondWith(
 			caches.match(event.request.url).then(function(response){
-				return response;
-			}).catch(function(){
-				return fetch(event.request);
+				return response || fetch(event.request);
 			})
 		);
 	}
