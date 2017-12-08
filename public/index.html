@@ -42,17 +42,6 @@
 
     <!-- Optional JavaScript -->
 	<script>
-		/*function addTasksync()
-		{
-			var taskname = document.getElementById("taskname").value;
-			alert(taskname);
-			registration.sync.register('tasks')
-			var payload = {
-					name: document.getElementById("taskname").value,
-			};
-			idbKeyval.set('add', payload); 
-			loadSiteT();
-		}*/
 		
 		function addTask()
 		{
@@ -146,25 +135,9 @@
 			alert(index);
 		}
 	</script>
-	<!--<script src="./js/idb-keyval.js"></script>-->
+	<script src="idb-keyval.js"></script>
 	<script>
 
-			/*
-			if('serviceWorker' in navigator && 'SyncManager' in window){
-				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
-					document.getElementById("eingabefeld").addEventListener('click', addTasksync());
-					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
-				}).catch(function(err){
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			} else if('serviceWorker' in navigator){
-				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
-					document.getElementById("eingabefeld").addEventListener('click', addTask());
-					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
-				}).catch(function(err){
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			}*/
 			if('serviceWorker' in navigator){
 				navigator.serviceWorker.register('ServiceWorker.js').then(function(registration){
 					console.log('ServiceWorker registration succesful with scope: ', registration.scope);
