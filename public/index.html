@@ -150,6 +150,17 @@
 								});
 							});
 						});
+			} else {
+				document.getElementById('eingabefeld').addEventlistener('click',() =>{
+					var payload ={
+						taskname: document.getElementById('taskname').value
+					};
+					fetch('/addTask/',{
+						method: 'POST',
+						headers: new Headers({'content-type': 'application/json'}),
+						body: JSON.stringify(payload)
+					});
+				});
 			}
 			/*
 			if('serviceWorker' in navigator){
