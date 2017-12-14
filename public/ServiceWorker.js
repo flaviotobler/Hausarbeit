@@ -42,9 +42,9 @@ self.addEventListener('fetch', event => {
 
 importScripts('./idb-keyval.js');
 self.addEventListener('sync', event => {
-	if(event.tag === 'addTask'){
+	//if(event.tag === 'addTask'){
 		event.waitUntil(
-			idbKeyval.get('theTask').then(value =>
+			idbKeyval.get(event.tag).then(value =>
 				fetch('/addTask/', {
 					method: 'POST',
 					headers: new Headers({ 'content-type': 'application/json'}),
@@ -52,6 +52,6 @@ self.addEventListener('sync', event => {
 				})
 			)
 		);
-		idbKeyval.delete('theTask');
-	}
+		idbKeyval.delete(event.tag);
+	//}
 });

@@ -153,11 +153,11 @@
 					.then(registration => navigator.serviceWorker.ready)
 						.then(registration => {
 							document.getElementById('eingabefeld').addEventListener('click', () => {
-								registration.sync.register('addTask').then(() => {
+								registration.sync.register(document.getElementById('taskname').value).then(() => {
 									var payload = {
 										taskname: document.getElementById('taskname').value
 									};
-									idbKeyval.set('theTask', payload);
+									idbKeyval.set(document.getElementById('taskname').value, payload);
 									displayMessageNotification('Tasks befinden sich zurzeit in der Warteschlange');
 								});
 							});
