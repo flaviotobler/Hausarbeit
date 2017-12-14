@@ -41,6 +41,22 @@ app.post('/close', function (req, res) {
 	res.send(JSON.stringify(tasks));
 });
 
+app.post('/open', function (req, res) {
+	console.log(req.body.id);
+	
+	tasks.forEach(function(task){
+		console.log(task.id);
+		if(task.id == req.body.id)
+		{
+			
+			task.isOpen = "todo";
+			console.log(tasks);
+			
+		}
+	});
+	res.send(JSON.stringify(tasks));
+});
+
 app.get('/selectionT', function (req, res) {
 	var rueckgabe = new Array ();
 	console.log("vorschleife");

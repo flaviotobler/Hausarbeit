@@ -103,8 +103,8 @@
 						var input = document.createElement("input");
 						input.className = "form-check-input";
 						input.type = "checkbox";
-						input.value = "";
-						input.addEventListener('click', checkboxC);
+						input.checked;
+						input.addEventListener('click', checkboxU);
 						input.id = task.id;
 						var p = document.createElement("P");
 						var text = task.name;
@@ -137,7 +137,12 @@
 		function checkboxU()
 		{
 			var index = $(this).attr('id');
-			alert(index);
+			alert(event.target.id);
+			var req = new XMLHttpRequest();
+			req.open("POST","/open");
+			req.setRequestHeader("Content-Type", "application/json");
+			req.send(JSON.stringify({'id': index}));
+			loadSiteT();
 		}
 	</script>
 	<script src="idb-keyval.js"></script>
