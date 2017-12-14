@@ -26,6 +26,12 @@
 		  <li class="nav-item">
 			<a class="nav-link" href="#" onclick=loadSiteD()>Done</a>
 		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#" > </a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link message" href="#" > </a>
+		  </li>
 		</ul>
 	  </div>
 	</nav>
@@ -137,6 +143,12 @@
 	</script>
 	<script src="idb-keyval.js"></script>
 	<script>
+			function displayMessageNotification (notificationText){
+				var messageNotification = document.getElementById('message');
+				messageNotification.innerHTML = notificationText;
+			}
+			
+			
 			if('serviceWorker' in navigator && 'SyncManager' in window){
 				navigator.serviceWorker.register('./ServiceWorker.js')
 					.then(registration => navigator.serviceWorker.ready)
@@ -147,6 +159,7 @@
 										taskname: document.getElementById('taskname').value
 									};
 									idbKeyval.set('theTask', payload);
+									displayMessageNotification('Sie sind zurzeit Offline. Der Task wurde in die Warteschlange eingereiht und wird Synchronisiert sobald sie wieder Online sind.');
 								});
 							});
 						});
@@ -159,7 +172,9 @@
 						method: 'POST',
 						headers: new Headers({'content-type': 'application/json'}),
 						body: JSON.stringify(payload)
-					});
+					})
+					.then(displayMessageNotification('Task wurde hochgeladen.'))
+					.catch((err) => displayMessageNotification('Operation fehlgeschlagen.'));
 				});
 			}
 			/*
