@@ -31,11 +31,6 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div id="message" class="col-12">
-				
-			</div>
-		</div>
-		<div class="row">
 			<div id="eingabe" class="col-12">
 					 <input type="task" class="form-control" id="taskname" aria-describedby="taskname" placeholder="Enter task" name = "isname">
 					 <input id="eingabefeld" type = "submit" value = "Submit">
@@ -47,6 +42,7 @@
 
     <!-- Optional JavaScript -->
 	<script>
+	
 		
 		function addTask()
 		{
@@ -148,10 +144,6 @@
 	</script>
 	<script src="idb-keyval.js"></script>
 	<script>
-			function displayMessageNotification (notificationText){
-				var messageNotification = document.getElementById('message');
-				messageNotification.innerHTML = notificationText;
-			}
 			
 			
 			if('serviceWorker' in navigator && 'SyncManager' in window){
@@ -164,7 +156,6 @@
 										taskname: document.getElementById('taskname').value
 									};
 									idbKeyval.set(document.getElementById('taskname').value, payload);
-									displayMessageNotification('Tasks befinden sich zurzeit in der Warteschlange');
 								});
 							});
 						});
@@ -178,8 +169,6 @@
 						headers: new Headers({'content-type': 'application/json'}),
 						body: JSON.stringify(payload)
 					})
-					.then(displayMessageNotification('Task wurde hochgeladen.'))
-					.catch((err) => displayMessageNotification('Operation fehlgeschlagen.'));
 				});
 			}
 			/*
